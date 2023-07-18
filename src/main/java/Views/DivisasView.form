@@ -126,6 +126,9 @@
             <Property name="horizontalAlignment" type="int" value="4"/>
             <Property name="text" type="java.lang.String" value="S/. 0.00"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtMontoDivisaMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
@@ -147,10 +150,13 @@
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
+              <StringArray count="6">
                 <StringItem index="0" value="Dolar"/>
                 <StringItem index="1" value="Euro"/>
-                <StringItem index="2" value="Libra"/>
+                <StringItem index="2" value="Libra Esterlina"/>
+                <StringItem index="3" value="Yen Japones"/>
+                <StringItem index="4" value="Won Sur-Coreano"/>
+                <StringItem index="5" value="Sol"/>
               </StringArray>
             </Property>
           </Properties>
@@ -229,11 +235,13 @@
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Dolar "/>
-                <StringItem index="1" value="Soles "/>
-                <StringItem index="2" value="Euro"/>
-                <StringItem index="3" value=" "/>
+              <StringArray count="6">
+                <StringItem index="0" value="Dolar"/>
+                <StringItem index="1" value="Euro"/>
+                <StringItem index="2" value="Libra Esterlina"/>
+                <StringItem index="3" value="Yen Japones"/>
+                <StringItem index="4" value="Won Sur-Coreano"/>
+                <StringItem index="5" value="Sol"/>
               </StringArray>
             </Property>
           </Properties>

@@ -14,12 +14,16 @@ import javax.swing.JPanel;
 
 
 
+
+
 /**
  *
  * @author Jesus
  */
 public class Window extends javax.swing.JFrame {
-
+    //====================================== PRUEBAAAA========================
+    
+    //==============================================================
     /**
      * Creates new form Window
      */
@@ -27,12 +31,8 @@ public class Window extends javax.swing.JFrame {
         initComponents();
         InitContent();
         setDate();
+        
 
-        
-        
- 
-    
-    
     }
 
     private void setDate(){
@@ -370,7 +370,7 @@ public class Window extends javax.swing.JFrame {
         txtDate.setForeground(new java.awt.Color(255, 255, 255));
         txtDate.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         txtDate.setText(".");
-        background.add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(246, 6, 638, -1));
+        background.add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(246, 6, 620, 20));
 
         contenedor.setPreferredSize(new java.awt.Dimension(614, 397));
 

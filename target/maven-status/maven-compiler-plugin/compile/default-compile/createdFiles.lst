@@ -1,6 +1,9 @@
 GUI\Window$3.class
 Views\MedidasView.class
+tablasDivisas\TablaEuro.class
+tablasDivisas\TablaYen.class
 GUI\Window$7.class
+Views\DivisasView$3.class
 GUI\Window$2.class
 Views\DivisasView$2.class
 Views\DivisasView.class
@@ -9,8 +12,13 @@ Views\DivisasView$1.class
 Views\TemperaturaView.class
 Views\PesoView.class
 GUI\Window$1.class
+tablasDivisas\TablaLibra.class
+tablasDivisas\TablaDivisa.class
+tablasDivisas\TablaWon.class
 GUI\Window$4.class
+tablasDivisas\TablaDolar.class
 GUI\Window$5.class
 Views\PageTest.class
 GUI\Window.class
 challenge\challengeconversor\ChallengeConversor.class
+tablasDivisas\TablaSol.class

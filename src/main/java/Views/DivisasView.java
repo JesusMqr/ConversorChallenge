@@ -3,20 +3,39 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package Views;
+import tablasDivisas.*;
 
 /**
  *
  * @author Jesus
  */
 public class DivisasView extends javax.swing.JPanel {
-
+    
+    static TablaDolar dolar;
+    static TablaEuro euro;
+    static TablaLibra libra;
+    static TablaSol sol;
+    static TablaWon won;
+    static TablaYen yen;
     /**
      * Creates new form DivisasView
      */
     public DivisasView() {
         initComponents();
+        InitTables();
     }
-
+    
+    public static void InitTables(){
+        dolar = new TablaDolar();
+        euro = new TablaEuro();
+        libra = new TablaLibra();
+        sol = new TablaSol();
+        won = new TablaWon();
+        yen = new TablaYen();
+    }
+    public static double getValorMoneda(TablaDivisa tabla, String moneda) {
+        return tabla.GetValue(moneda);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,6 +67,11 @@ public class DivisasView extends javax.swing.JPanel {
         txtMontoDivisa.setForeground(new java.awt.Color(153, 153, 153));
         txtMontoDivisa.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtMontoDivisa.setText("S/. 0.00");
+        txtMontoDivisa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtMontoDivisaMouseClicked(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Roboto Black", 0, 20)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -55,7 +79,7 @@ public class DivisasView extends javax.swing.JPanel {
 
         comboOrigenDivisa.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         comboOrigenDivisa.setForeground(new java.awt.Color(102, 102, 102));
-        comboOrigenDivisa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dolar", "Euro", "Libra" }));
+        comboOrigenDivisa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dolar", "Euro", "Libra Esterlina", "Yen Japones", "Won Sur-Coreano", "Sol" }));
 
         jPanel2.setBackground(new java.awt.Color(0, 99, 82));
 
@@ -97,7 +121,7 @@ public class DivisasView extends javax.swing.JPanel {
 
         comboDestinoDivisa.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         comboDestinoDivisa.setForeground(new java.awt.Color(102, 102, 102));
-        comboDestinoDivisa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dolar ", "Soles ", "Euro", " " }));
+        comboDestinoDivisa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dolar", "Euro", "Libra Esterlina", "Yen Japones", "Won Sur-Coreano", "Sol" }));
         comboDestinoDivisa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboDestinoDivisaActionPerformed(evt);
@@ -182,8 +206,58 @@ public class DivisasView extends javax.swing.JPanel {
 
     private void btnConvertirDivisaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConvertirDivisaMouseClicked
         // TODO add your handling code here:
-        txtResultadoDivisa.setText("Funciona");
+        double monto = Double.parseDouble(txtMontoDivisa.getText());
+        String monedaOrigen =(String) comboOrigenDivisa.getSelectedItem() ;
+        String monedaDestino = (String) comboDestinoDivisa.getSelectedItem();
+        double  valorMoneda = 0.0;
+        switch (monedaOrigen){
+            case "Dolar":
+                valorMoneda = getValorMoneda(dolar, monedaDestino);
+                
+                txtResultadoDivisa.setText(String.format("%.2f",(monto / valorMoneda)));
+                System.out.println("La conversion de " + monto + " " + monedaOrigen + " a " + monedaDestino + " es de: " + String.format("%.2f",(monto / valorMoneda)));
+                System.out.println(monto);
+                System.out.println(dolar.GetValue(monedaDestino));
+                
+                System.out.println(sol.GetValue(monedaDestino));
+                System.out.println(monedaDestino);
+                break;
+
+            case "Euro":
+                valorMoneda = getValorMoneda(euro, monedaDestino);
+                txtResultadoDivisa.setText(String.format("%.2f",(monto / valorMoneda)));
+                System.out.println("La conversion de " + monto + " " + monedaOrigen + " a " + monedaDestino + " es de: " + String.format("%.2f",(monto / valorMoneda)));
+                break;
+            case "Libra Esterlina":
+                valorMoneda = getValorMoneda(libra, monedaDestino);
+                txtResultadoDivisa.setText(String.format("%.2f",(monto / valorMoneda)));
+                System.out.println("La conversion de " + monto + " " + monedaOrigen + " a " + monedaDestino + " es de: " + String.format("%.2f",(monto / valorMoneda)));
+                break;
+            case "Yen Japones":
+                valorMoneda = getValorMoneda(yen, monedaDestino);
+                txtResultadoDivisa.setText(String.format("%.2f",(monto / valorMoneda)));
+                System.out.println("La conversion de " + monto + " " + monedaOrigen + " a " + monedaDestino + " es de: " + String.format("%.2f",(monto / valorMoneda)));
+                break;
+            case "Sol":
+                valorMoneda = getValorMoneda(sol, monedaDestino);
+                txtResultadoDivisa.setText(String.format("%.2f",(monto / valorMoneda)));
+                System.out.println("La conversion de " + monto + " " + monedaOrigen + " a " + monedaDestino + " es de: " + String.format("%.2f",(monto / valorMoneda)));
+                
+                break;
+            case "Won Sur-Coreano":
+                valorMoneda = getValorMoneda(won, monedaDestino);
+                txtResultadoDivisa.setText(String.format("%.2f",(monto / valorMoneda)));
+                System.out.println("La conversion de " + monto + " " + monedaOrigen + " a " + monedaDestino + " es de: " + String.format("%.2f",(monto / valorMoneda)));
+                break;
+            default:
+                System.out.println("No se pudo completar");
+        }
     }//GEN-LAST:event_btnConvertirDivisaMouseClicked
+
+    private void txtMontoDivisaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMontoDivisaMouseClicked
+        // TODO add your handling code here:
+        txtMontoDivisa.setText("");
+    }//GEN-LAST:event_txtMontoDivisaMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
