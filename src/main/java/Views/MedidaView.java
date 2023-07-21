@@ -3,42 +3,45 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package Views;
-import javax.swing.JOptionPane;
-import tablasDivisas.*;
+
+import TablasMedidas.*;
 
 /**
  *
  * @author Jesus
  */
-public class DivisasView extends javax.swing.JPanel {
-    
-    static TablaDolar dolar;
-    static TablaEuro euro;
-    static TablaLibra libra;
-    static TablaSol sol;
-    static TablaWon won;
-    static TablaYen yen;
+public class MedidaView extends javax.swing.JPanel {
+
+    static TablaMedida milimetro;
+    static TablaMedida centimetro;
+    static TablaMedida decimetro;
+    static TablaMedida metro;
+    static TablaMedida decametro;
+    static TablaMedida hectometro;
+    static TablaMedida kilometro;
+
     /**
      * Creates new form DivisasView
      */
-    public DivisasView() {
+    public MedidaView() {
         initComponents();
         InitTables();
     }
-    
-    public static void InitTables(){
-        dolar = new TablaDolar();
-        euro = new TablaEuro();
-        libra = new TablaLibra();
-        sol = new TablaSol();
-        won = new TablaWon();
-        yen = new TablaYen();
+
+    public static void InitTables() {
+        milimetro = new TablaMilimetro();
+        centimetro = new TablaCentimetro();
+        decimetro = new TablaDecimetro();
+        metro = new TablaMetro();
+        decametro = new TablaDecametro();
+        hectometro = new TablaHectometro();
+        kilometro = new TablaKilometro();
     }
-    public static double getValorMoneda(TablaDivisa tabla, String moneda) {
+
+    public static double getValorMedida(TablaMedida tabla, String moneda) {
         return tabla.GetValue(moneda);
     }
-    
-   
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,48 +53,39 @@ public class DivisasView extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txtMontoDivisa = new javax.swing.JTextField();
+        txtMontoMedida = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        comboOrigenDivisa = new javax.swing.JComboBox<>();
+        comboOrigenMedida = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         btnConvertirDivisa = new javax.swing.JLabel();
-        txtResultadoDivisa = new javax.swing.JTextField();
+        txtResultadoMedida = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        comboDestinoDivisa = new javax.swing.JComboBox<>();
+        comboDestinoMedida = new javax.swing.JComboBox<>();
 
         jPanel1.setBackground(new java.awt.Color(35, 34, 34));
         jPanel1.setPreferredSize(new java.awt.Dimension(614, 397));
 
         jLabel1.setFont(new java.awt.Font("Roboto Black", 0, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Ingresa el monto que quieres convertir:");
+        jLabel1.setText("Ingresa la cantidad que desea convertir:");
 
-        txtMontoDivisa.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        txtMontoDivisa.setForeground(new java.awt.Color(153, 153, 153));
-        txtMontoDivisa.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        txtMontoDivisa.setText("S/. 0.00");
-        txtMontoDivisa.setBorder(null);
-        txtMontoDivisa.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txtMontoDivisa.addMouseListener(new java.awt.event.MouseAdapter() {
+        txtMontoMedida.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        txtMontoMedida.setForeground(new java.awt.Color(153, 153, 153));
+        txtMontoMedida.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtMontoMedida.setText("0.00");
+        txtMontoMedida.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtMontoDivisaMouseClicked(evt);
-            }
-        });
-        txtMontoDivisa.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtMontoDivisaKeyTyped(evt);
+                txtMontoMedidaMouseClicked(evt);
             }
         });
 
         jLabel2.setFont(new java.awt.Font("Roboto Black", 0, 20)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Divisa de destino");
+        jLabel2.setText("Medida de destino");
 
-        comboOrigenDivisa.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        comboOrigenDivisa.setForeground(new java.awt.Color(102, 102, 102));
-        comboOrigenDivisa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dolar", "Euro", "Libra Esterlina", "Yen Japones", "Won Sur-Coreano", "Sol" }));
-        comboOrigenDivisa.setSelectedIndex(5);
-        comboOrigenDivisa.setBorder(null);
+        comboOrigenMedida.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        comboOrigenMedida.setForeground(new java.awt.Color(102, 102, 102));
+        comboOrigenMedida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "mm", "cm", "dm", "m", "Dam", "Hm", "Km" }));
 
         jPanel2.setBackground(new java.awt.Color(0, 99, 82));
 
@@ -99,7 +93,6 @@ public class DivisasView extends javax.swing.JPanel {
         btnConvertirDivisa.setForeground(new java.awt.Color(255, 255, 255));
         btnConvertirDivisa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnConvertirDivisa.setText("CONVERTIR");
-        btnConvertirDivisa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnConvertirDivisa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnConvertirDivisaMouseClicked(evt);
@@ -123,21 +116,21 @@ public class DivisasView extends javax.swing.JPanel {
             .addComponent(btnConvertirDivisa, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
         );
 
-        txtResultadoDivisa.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        txtResultadoDivisa.setForeground(new java.awt.Color(153, 153, 153));
-        txtResultadoDivisa.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        txtResultadoDivisa.setText("Resultado...");
+        txtResultadoMedida.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        txtResultadoMedida.setForeground(new java.awt.Color(153, 153, 153));
+        txtResultadoMedida.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtResultadoMedida.setText("Resultado...");
 
         jLabel4.setFont(new java.awt.Font("Roboto Black", 0, 20)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Divisa de origen");
+        jLabel4.setText("Medida de origen\n");
 
-        comboDestinoDivisa.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        comboDestinoDivisa.setForeground(new java.awt.Color(102, 102, 102));
-        comboDestinoDivisa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dolar", "Euro", "Libra Esterlina", "Yen Japones", "Won Sur-Coreano", "Sol" }));
-        comboDestinoDivisa.addActionListener(new java.awt.event.ActionListener() {
+        comboDestinoMedida.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        comboDestinoMedida.setForeground(new java.awt.Color(102, 102, 102));
+        comboDestinoMedida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "mm", "cm", "dm", "m", "Dam", "Hm", "Km" }));
+        comboDestinoMedida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboDestinoDivisaActionPerformed(evt);
+                comboDestinoMedidaActionPerformed(evt);
             }
         });
 
@@ -150,7 +143,7 @@ public class DivisasView extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel1)
-                        .addComponent(txtMontoDivisa, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtMontoMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -158,9 +151,9 @@ public class DivisasView extends javax.swing.JPanel {
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(comboOrigenDivisa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtResultadoDivisa)
-                            .addComponent(comboDestinoDivisa, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(comboOrigenMedida, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtResultadoMedida)
+                            .addComponent(comboDestinoMedida, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(77, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -169,15 +162,15 @@ public class DivisasView extends javax.swing.JPanel {
                 .addGap(41, 41, 41)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(txtMontoDivisa, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtMontoMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(comboOrigenDivisa, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboOrigenMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(comboDestinoDivisa, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboDestinoMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -185,7 +178,7 @@ public class DivisasView extends javax.swing.JPanel {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(37, 37, 37)
-                        .addComponent(txtResultadoDivisa, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtResultadoMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(52, 52, 52))
         );
 
@@ -205,9 +198,9 @@ public class DivisasView extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void comboDestinoDivisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboDestinoDivisaActionPerformed
+    private void comboDestinoMedidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboDestinoMedidaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_comboDestinoDivisaActionPerformed
+    }//GEN-LAST:event_comboDestinoMedidaActionPerformed
 
     private void btnConvertirDivisaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConvertirDivisaMouseEntered
         // TODO add your handling code here:
@@ -219,84 +212,61 @@ public class DivisasView extends javax.swing.JPanel {
 
     private void btnConvertirDivisaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConvertirDivisaMouseClicked
         // TODO add your handling code here:
-        
-        double monto = Double.parseDouble(txtMontoDivisa.getText());
-        
-        String monedaOrigen =(String) comboOrigenDivisa.getSelectedItem() ;
-        String monedaDestino = (String) comboDestinoDivisa.getSelectedItem();
-        double  valorMoneda = 0.0;
-        switch (monedaOrigen){
-            case "Dolar":
-                
-                valorMoneda = getValorMoneda(dolar, monedaDestino);
-                
-                txtResultadoDivisa.setText(String.format("%.2f",(monto / valorMoneda)));
-                System.out.println("La conversion de " + monto + " " + monedaOrigen + " a " + monedaDestino + " es de: " + String.format("%.2f",(monto / valorMoneda)));
-                System.out.println(monto);
-                System.out.println(dolar.GetValue(monedaDestino));
-                
-                System.out.println(sol.GetValue(monedaDestino));
-                System.out.println(monedaDestino);
+        double monto = Double.parseDouble(txtMontoMedida.getText());
+        String medidaOrigen = (String) comboOrigenMedida.getSelectedItem();
+        String medidaDestino = (String) comboDestinoMedida.getSelectedItem();
+        double valorMedida = 0.0;
+        switch (medidaOrigen) {
+            case "mm":
+                valorMedida = getValorMedida(milimetro, medidaDestino);
+                txtResultadoMedida.setText(String.format("%.2f", (monto * valorMedida)));
+                break;
+            case "cm":
+                valorMedida = getValorMedida(centimetro, medidaDestino);
+                txtResultadoMedida.setText(String.format("%.2f", (monto * valorMedida)));
+                break;
+            case "dm":
+                valorMedida = getValorMedida(decimetro, medidaDestino);
+                txtResultadoMedida.setText(String.format("%.2f", (monto * valorMedida)));
+                break;
+            case "m":
+                valorMedida = getValorMedida(metro, medidaDestino);
+                txtResultadoMedida.setText(String.format("%.2f", (monto * valorMedida)));
+                break;
+            case "Dam":
+                valorMedida = getValorMedida(decametro, medidaDestino);
+                txtResultadoMedida.setText(String.format("%.2f", (monto * valorMedida)));
+                break;
+            case "Hm":
+                valorMedida = getValorMedida(hectometro, medidaDestino);
+                txtResultadoMedida.setText(String.format("%.2f", (monto * valorMedida)));
+                break;
+            case "Km":
+                valorMedida = getValorMedida(kilometro, medidaDestino);
+                txtResultadoMedida.setText(String.format("%.2f", (monto* valorMedida)));
                 break;
 
-            case "Euro":
-                valorMoneda = getValorMoneda(euro, monedaDestino);
-                txtResultadoDivisa.setText(String.format("%.2f",(monto / valorMoneda)));
-                System.out.println("La conversion de " + monto + " " + monedaOrigen + " a " + monedaDestino + " es de: " + String.format("%.2f",(monto / valorMoneda)));
-                break;
-            case "Libra Esterlina":
-                valorMoneda = getValorMoneda(libra, monedaDestino);
-                txtResultadoDivisa.setText(String.format("%.2f",(monto / valorMoneda)));
-                System.out.println("La conversion de " + monto + " " + monedaOrigen + " a " + monedaDestino + " es de: " + String.format("%.2f",(monto / valorMoneda)));
-                break;
-            case "Yen Japones":
-                valorMoneda = getValorMoneda(yen, monedaDestino);
-                txtResultadoDivisa.setText(String.format("%.2f",(monto / valorMoneda)));
-                System.out.println("La conversion de " + monto + " " + monedaOrigen + " a " + monedaDestino + " es de: " + String.format("%.2f",(monto / valorMoneda)));
-                break;
-            case "Sol":
-                valorMoneda = getValorMoneda(sol, monedaDestino);
-                txtResultadoDivisa.setText(String.format("%.2f",(monto / valorMoneda)));
-                System.out.println("La conversion de " + monto + " " + monedaOrigen + " a " + monedaDestino + " es de: " + String.format("%.2f",(monto / valorMoneda)));
-                
-                break;
-            case "Won Sur-Coreano":
-                valorMoneda = getValorMoneda(won, monedaDestino);
-                txtResultadoDivisa.setText(String.format("%.2f",(monto / valorMoneda)));
-                System.out.println("La conversion de " + monto + " " + monedaOrigen + " a " + monedaDestino + " es de: " + String.format("%.2f",(monto / valorMoneda)));
-                break;
             default:
                 System.out.println("No se pudo completar");
         }
     }//GEN-LAST:event_btnConvertirDivisaMouseClicked
 
-    private void txtMontoDivisaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMontoDivisaMouseClicked
+    private void txtMontoMedidaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMontoMedidaMouseClicked
         // TODO add your handling code here:
-        txtMontoDivisa.setText("");
-    }//GEN-LAST:event_txtMontoDivisaMouseClicked
-
-    private void txtMontoDivisaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMontoDivisaKeyTyped
-        // TODO add your handling code here:
-        char number = evt.getKeyChar();
-        
-        if ( Character.isLetter(number)){
-           getToolkit().beep();
-           evt.consume();
-            txtResultadoDivisa.setText("Ingresa solo numeros");
-        }
-    }//GEN-LAST:event_txtMontoDivisaKeyTyped
+        txtMontoMedida.setText("");
+    }//GEN-LAST:event_txtMontoMedidaMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnConvertirDivisa;
-    private javax.swing.JComboBox<String> comboDestinoDivisa;
-    private javax.swing.JComboBox<String> comboOrigenDivisa;
+    private javax.swing.JComboBox<String> comboDestinoMedida;
+    private javax.swing.JComboBox<String> comboOrigenMedida;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField txtMontoDivisa;
-    private javax.swing.JTextField txtResultadoDivisa;
+    private javax.swing.JTextField txtMontoMedida;
+    private javax.swing.JTextField txtResultadoMedida;
     // End of variables declaration//GEN-END:variables
 }

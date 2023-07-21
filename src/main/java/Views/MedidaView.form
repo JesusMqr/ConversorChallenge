@@ -50,7 +50,7 @@
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtMontoDivisa" min="-2" pref="481" max="-2" attributes="0"/>
+                          <Component id="txtMontoMedida" min="-2" pref="481" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -60,9 +60,9 @@
                           </Group>
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="comboOrigenDivisa" max="32767" attributes="0"/>
-                              <Component id="txtResultadoDivisa" max="32767" attributes="0"/>
-                              <Component id="comboDestinoDivisa" alignment="1" max="32767" attributes="0"/>
+                              <Component id="comboOrigenMedida" max="32767" attributes="0"/>
+                              <Component id="txtResultadoMedida" max="32767" attributes="0"/>
+                              <Component id="comboDestinoMedida" alignment="1" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -76,16 +76,16 @@
                   <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="txtMontoDivisa" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="txtMontoMedida" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="comboOrigenDivisa" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="comboOrigenMedida" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="comboDestinoDivisa" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="comboDestinoMedida" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="17" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -95,7 +95,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                          <Component id="txtResultadoDivisa" min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="txtResultadoMedida" min="-2" pref="37" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
@@ -112,10 +112,10 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ingresa el monto que quieres convertir:"/>
+            <Property name="text" type="java.lang.String" value="Ingresa la cantidad que desea convertir:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtMontoDivisa">
+        <Component class="javax.swing.JTextField" name="txtMontoMedida">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="18" style="0"/>
@@ -124,17 +124,10 @@
               <Color blue="99" green="99" red="99" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="4"/>
-            <Property name="text" type="java.lang.String" value="S/. 0.00"/>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="null"/>
-            </Property>
-            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Text Cursor"/>
-            </Property>
+            <Property name="text" type="java.lang.String" value="0.00"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtMontoDivisaMouseClicked"/>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtMontoDivisaKeyTyped"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtMontoMedidaMouseClicked"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
@@ -145,10 +138,10 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Divisa de destino"/>
+            <Property name="text" type="java.lang.String" value="Medida de destino"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="comboOrigenDivisa">
+        <Component class="javax.swing.JComboBox" name="comboOrigenMedida">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="18" style="0"/>
@@ -157,18 +150,15 @@
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="6">
-                <StringItem index="0" value="Dolar"/>
-                <StringItem index="1" value="Euro"/>
-                <StringItem index="2" value="Libra Esterlina"/>
-                <StringItem index="3" value="Yen Japones"/>
-                <StringItem index="4" value="Won Sur-Coreano"/>
-                <StringItem index="5" value="Sol"/>
+              <StringArray count="7">
+                <StringItem index="0" value="mm"/>
+                <StringItem index="1" value="cm"/>
+                <StringItem index="2" value="dm"/>
+                <StringItem index="3" value="m"/>
+                <StringItem index="4" value="Dam"/>
+                <StringItem index="5" value="Hm"/>
+                <StringItem index="6" value="Km"/>
               </StringArray>
-            </Property>
-            <Property name="selectedIndex" type="int" value="5"/>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="null"/>
             </Property>
           </Properties>
           <AuxValues>
@@ -205,9 +195,6 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="CONVERTIR"/>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Hand Cursor"/>
-                </Property>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnConvertirDivisaMouseClicked"/>
@@ -217,7 +204,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JTextField" name="txtResultadoDivisa">
+        <Component class="javax.swing.JTextField" name="txtResultadoMedida">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="18" style="0"/>
@@ -237,10 +224,10 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Divisa de origen"/>
+            <Property name="text" type="java.lang.String" value="Medida de origen&#xa;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="comboDestinoDivisa">
+        <Component class="javax.swing.JComboBox" name="comboDestinoMedida">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="18" style="0"/>
@@ -249,18 +236,19 @@
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="6">
-                <StringItem index="0" value="Dolar"/>
-                <StringItem index="1" value="Euro"/>
-                <StringItem index="2" value="Libra Esterlina"/>
-                <StringItem index="3" value="Yen Japones"/>
-                <StringItem index="4" value="Won Sur-Coreano"/>
-                <StringItem index="5" value="Sol"/>
+              <StringArray count="7">
+                <StringItem index="0" value="mm"/>
+                <StringItem index="1" value="cm"/>
+                <StringItem index="2" value="dm"/>
+                <StringItem index="3" value="m"/>
+                <StringItem index="4" value="Dam"/>
+                <StringItem index="5" value="Hm"/>
+                <StringItem index="6" value="Km"/>
               </StringArray>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboDestinoDivisaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboDestinoMedidaActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>

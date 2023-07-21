@@ -413,7 +413,7 @@ public class Window extends javax.swing.JFrame {
 
     private void btnMedidasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMedidasMouseClicked
         // TODO add your handling code here:
-        ShowJPanel(new MedidasView());
+        ShowJPanel(new MedidaView());
     }//GEN-LAST:event_btnMedidasMouseClicked
 
     private void btnPesoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesoMouseClicked
