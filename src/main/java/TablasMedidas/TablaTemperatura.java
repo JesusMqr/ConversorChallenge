@@ -8,10 +8,12 @@ package TablasMedidas;
  *
  * @author Jesus
  */
-public class TablaMedida {
-    
-    public double GetValue(String moneda){
+public class TablaTemperatura {
+    public TablaTemperatura(){
         
+    }
+    
+    public double GetValue(String medida){
         return 0;
     }
 }

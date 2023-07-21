@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package Views;
+import TablasTemperatura.*;
 
 /**
  *
@@ -10,11 +11,28 @@ package Views;
  */
 public class TemperaturaView extends javax.swing.JPanel {
 
+    static TablaTemperatura kelvin;
+    static TablaTemperatura fahrenheitt;
+    static TablaTemperatura celsius;
+
+
     /**
-     * Creates new form TemperaturaView
+     * Creates new form DivisasView
      */
     public TemperaturaView() {
         initComponents();
+        InitTables();
+    }
+
+    public static void InitTables() {
+        kelvin = new TablaKelvin();
+        fahrenheitt = new TablaFahrenheitt();
+        celsius = new TablaCelsius();
+
+    }
+
+    public static double getValorMedida(TablaTemperatura tabla, String temperatura) {
+        return tabla.GetValue(temperatura);
     }
 
     /**
@@ -28,27 +46,133 @@ public class TemperaturaView extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        txtMontoTemperatura = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        comboOrigenTemperatura = new javax.swing.JComboBox<>();
+        jPanel2 = new javax.swing.JPanel();
+        btnConvertirTemperatura = new javax.swing.JLabel();
+        txtResultadoTemperatura = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        comboDestinoTemperatura = new javax.swing.JComboBox<>();
 
-        jPanel1.setBackground(new java.awt.Color(153, 255, 102));
+        jPanel1.setBackground(new java.awt.Color(35, 34, 34));
         jPanel1.setPreferredSize(new java.awt.Dimension(614, 397));
 
-        jLabel1.setText("TEMPERATURA");
+        jLabel1.setFont(new java.awt.Font("Roboto Black", 0, 20)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Ingresa la temperatura que desea convertir:");
+
+        txtMontoTemperatura.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        txtMontoTemperatura.setForeground(new java.awt.Color(153, 153, 153));
+        txtMontoTemperatura.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtMontoTemperatura.setText("0.00");
+        txtMontoTemperatura.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtMontoTemperaturaMouseClicked(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Roboto Black", 0, 20)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Temperatura de destino");
+
+        comboOrigenTemperatura.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        comboOrigenTemperatura.setForeground(new java.awt.Color(102, 102, 102));
+        comboOrigenTemperatura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Celsius", "Fahrenheitt", "Kelvin" }));
+
+        jPanel2.setBackground(new java.awt.Color(0, 99, 82));
+
+        btnConvertirTemperatura.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        btnConvertirTemperatura.setForeground(new java.awt.Color(255, 255, 255));
+        btnConvertirTemperatura.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnConvertirTemperatura.setText("CONVERTIR");
+        btnConvertirTemperatura.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnConvertirTemperaturaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnConvertirTemperaturaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnConvertirTemperaturaMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnConvertirTemperatura, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnConvertirTemperatura, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+        );
+
+        txtResultadoTemperatura.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        txtResultadoTemperatura.setForeground(new java.awt.Color(153, 153, 153));
+        txtResultadoTemperatura.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtResultadoTemperatura.setText("Resultado...");
+
+        jLabel4.setFont(new java.awt.Font("Roboto Black", 0, 20)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Temperatura de origen ");
+
+        comboDestinoTemperatura.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        comboDestinoTemperatura.setForeground(new java.awt.Color(102, 102, 102));
+        comboDestinoTemperatura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Celsius", "Fahrenheitt", "Kelvin" }));
+        comboDestinoTemperatura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboDestinoTemperaturaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(180, 180, 180)
-                .addComponent(jLabel1)
-                .addContainerGap(354, Short.MAX_VALUE))
+                .addGap(56, 56, 56)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel1)
+                        .addComponent(txtMontoTemperatura, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtResultadoTemperatura)
+                            .addComponent(comboOrigenTemperatura, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(comboDestinoTemperatura, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(143, 143, 143)
+                .addGap(41, 41, 41)
                 .addComponent(jLabel1)
-                .addContainerGap(238, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(txtMontoTemperatura, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(comboOrigenTemperatura, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(comboDestinoTemperatura, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(txtResultadoTemperatura, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(52, 52, 52))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -67,9 +191,59 @@ public class TemperaturaView extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void comboDestinoTemperaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboDestinoTemperaturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboDestinoTemperaturaActionPerformed
+
+    private void btnConvertirTemperaturaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConvertirTemperaturaMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnConvertirTemperaturaMouseEntered
+
+    private void btnConvertirTemperaturaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConvertirTemperaturaMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnConvertirTemperaturaMouseExited
+
+    private void btnConvertirTemperaturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConvertirTemperaturaMouseClicked
+        // TODO add your handling code here:
+        double monto = Double.parseDouble(txtMontoTemperatura.getText());
+        String temperaturaOrigen = (String) comboOrigenTemperatura.getSelectedItem();
+        String temperaturaDestino = (String) comboDestinoTemperatura.getSelectedItem();
+        double valorTemperatura = 0.0;
+        switch (temperaturaOrigen) {
+            case "Kelvin":
+                valorTemperatura = getValorMedida(kelvin, temperaturaDestino);
+                txtResultadoTemperatura.setText(String.format("%.2f", (monto * valorTemperatura)));
+                break;
+            case "Fahrenheitt":
+                valorTemperatura = getValorMedida(fahrenheitt, temperaturaDestino);
+                txtResultadoTemperatura.setText(String.format("%.2f", (monto * valorTemperatura)));
+                break;
+            case "celsius":
+                valorTemperatura = getValorMedida(celsius, temperaturaDestino);
+                txtResultadoTemperatura.setText(String.format("%.2f", (monto * valorTemperatura)));
+                break;
+
+            default:
+                System.out.println("No se pudo completar");
+        }
+    }//GEN-LAST:event_btnConvertirTemperaturaMouseClicked
+
+    private void txtMontoTemperaturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMontoTemperaturaMouseClicked
+        // TODO add your handling code here:
+        txtMontoTemperatura.setText("");
+    }//GEN-LAST:event_txtMontoTemperaturaMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnConvertirTemperatura;
+    private javax.swing.JComboBox<String> comboDestinoTemperatura;
+    private javax.swing.JComboBox<String> comboOrigenTemperatura;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField txtMontoTemperatura;
+    private javax.swing.JTextField txtResultadoTemperatura;
     // End of variables declaration//GEN-END:variables
 }

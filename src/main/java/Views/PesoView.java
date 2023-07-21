@@ -4,17 +4,45 @@
  */
 package Views;
 
+import TablasPeso.*;
+
+
 /**
  *
  * @author Jesus
  */
 public class PesoView extends javax.swing.JPanel {
 
+    static TablaPeso miligramo;
+    static TablaPeso centigramo;
+    static TablaPeso decigramo;
+    static TablaPeso gramo;
+    static TablaPeso decagramo;
+    static TablaPeso hectogramo;
+    static TablaPeso kilogramo;
+    static TablaPeso tonelada;
+
     /**
-     * Creates new form PesoView
+     * Creates new form DivisasView
      */
     public PesoView() {
         initComponents();
+        InitTables();
+    }
+
+    public static void InitTables() {
+        miligramo = new TablaMiligramo();
+        centigramo = new TablaCentigramo();
+        decigramo = new TablaDecigramo();
+        gramo = new TablaGramo();
+        decagramo = new TablaDecagramo();
+        hectogramo = new TablaHectogramo();
+        kilogramo = new TablaKilogramo();
+        tonelada = new TablaTonelada();
+    }
+
+    public static double getValorMedida(TablaPeso tabla, String moneda) {
+        return tabla.GetValue(moneda);
     }
 
     /**
@@ -28,29 +56,133 @@ public class PesoView extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        txtMontoPeso = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        comboOrigenPeso = new javax.swing.JComboBox<>();
+        jPanel2 = new javax.swing.JPanel();
+        btnConvertirPeso = new javax.swing.JLabel();
+        txtResultadoPeso = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        comboDestinoPeso = new javax.swing.JComboBox<>();
 
-        setPreferredSize(new java.awt.Dimension(614, 397));
-
-        jPanel1.setBackground(new java.awt.Color(51, 204, 0));
+        jPanel1.setBackground(new java.awt.Color(35, 34, 34));
         jPanel1.setPreferredSize(new java.awt.Dimension(614, 397));
 
-        jLabel1.setText("PESO");
+        jLabel1.setFont(new java.awt.Font("Roboto Black", 0, 20)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Ingresa la cantidad que desea convertir:");
+
+        txtMontoPeso.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        txtMontoPeso.setForeground(new java.awt.Color(153, 153, 153));
+        txtMontoPeso.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtMontoPeso.setText("0.00");
+        txtMontoPeso.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtMontoPesoMouseClicked(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Roboto Black", 0, 20)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Peso de destino");
+
+        comboOrigenPeso.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        comboOrigenPeso.setForeground(new java.awt.Color(102, 102, 102));
+        comboOrigenPeso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "mg", "cg", "dg", "g", "Dag", "Hg", "Kg", "T" }));
+
+        jPanel2.setBackground(new java.awt.Color(0, 99, 82));
+
+        btnConvertirPeso.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        btnConvertirPeso.setForeground(new java.awt.Color(255, 255, 255));
+        btnConvertirPeso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnConvertirPeso.setText("CONVERTIR");
+        btnConvertirPeso.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnConvertirPesoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnConvertirPesoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnConvertirPesoMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnConvertirPeso, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnConvertirPeso, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+        );
+
+        txtResultadoPeso.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        txtResultadoPeso.setForeground(new java.awt.Color(153, 153, 153));
+        txtResultadoPeso.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtResultadoPeso.setText("Resultado...");
+
+        jLabel4.setFont(new java.awt.Font("Roboto Black", 0, 20)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Peso de origen ");
+
+        comboDestinoPeso.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        comboDestinoPeso.setForeground(new java.awt.Color(102, 102, 102));
+        comboDestinoPeso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "mg", "cg", "dg", "g", "Dag", "Hg", "Kg", "T" }));
+        comboDestinoPeso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboDestinoPesoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel1)
-                .addContainerGap(555, Short.MAX_VALUE))
+                .addGap(56, 56, 56)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel1)
+                        .addComponent(txtMontoPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(comboOrigenPeso, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtResultadoPeso)
+                            .addComponent(comboDestinoPeso, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(41, 41, 41)
                 .addComponent(jLabel1)
-                .addContainerGap(342, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(txtMontoPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(comboOrigenPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(comboDestinoPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(txtResultadoPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(52, 52, 52))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -69,9 +201,79 @@ public class PesoView extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void comboDestinoPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboDestinoPesoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboDestinoPesoActionPerformed
+
+    private void btnConvertirPesoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConvertirPesoMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnConvertirPesoMouseEntered
+
+    private void btnConvertirPesoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConvertirPesoMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnConvertirPesoMouseExited
+
+    private void btnConvertirPesoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConvertirPesoMouseClicked
+        // TODO add your handling code here:
+        double monto = Double.parseDouble(txtMontoPeso.getText());
+        String pesoOrigen = (String) comboOrigenPeso.getSelectedItem();
+        String pesoDestino = (String) comboDestinoPeso.getSelectedItem();
+        double valorMedida = 0.0;
+        switch (pesoOrigen) {
+            case "mg":
+                valorMedida = getValorMedida(miligramo, pesoDestino);
+                txtResultadoPeso.setText(String.format("%.2f", (monto * valorMedida)));
+                break;
+            case "cg":
+                valorMedida = getValorMedida(centigramo, pesoDestino);
+                txtResultadoPeso.setText(String.format("%.2f", (monto * valorMedida)));
+                break;
+            case "dg":
+                valorMedida = getValorMedida(decigramo, pesoDestino);
+                txtResultadoPeso.setText(String.format("%.2f", (monto * valorMedida)));
+                break;
+            case "g":
+                valorMedida = getValorMedida(gramo, pesoDestino);
+                txtResultadoPeso.setText(String.format("%.2f", (monto * valorMedida)));
+                break;
+            case "Dag":
+                valorMedida = getValorMedida(decagramo, pesoDestino);
+                txtResultadoPeso.setText(String.format("%.2f", (monto * valorMedida)));
+                break;
+            case "Hg":
+                valorMedida = getValorMedida(hectogramo, pesoDestino);
+                txtResultadoPeso.setText(String.format("%.2f", (monto * valorMedida)));
+                break;
+            case "Kg":
+                valorMedida = getValorMedida(kilogramo, pesoDestino);
+                txtResultadoPeso.setText(String.format("%.2f", (monto* valorMedida)));
+                break;
+            case "T":
+                valorMedida = getValorMedida(tonelada, pesoDestino);
+                txtResultadoPeso.setText(String.format("%.2f", (monto* valorMedida)));
+                break;
+
+            default:
+                System.out.println("No se pudo completar");
+        }
+    }//GEN-LAST:event_btnConvertirPesoMouseClicked
+
+    private void txtMontoPesoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMontoPesoMouseClicked
+        // TODO add your handling code here:
+        txtMontoPeso.setText("");
+    }//GEN-LAST:event_txtMontoPesoMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnConvertirPeso;
+    private javax.swing.JComboBox<String> comboDestinoPeso;
+    private javax.swing.JComboBox<String> comboOrigenPeso;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField txtMontoPeso;
+    private javax.swing.JTextField txtResultadoPeso;
     // End of variables declaration//GEN-END:variables
 }

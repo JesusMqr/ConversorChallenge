@@ -12,13 +12,13 @@ import TablasMedidas.*;
  */
 public class MedidaView extends javax.swing.JPanel {
 
-    static TablaMedida milimetro;
-    static TablaMedida centimetro;
-    static TablaMedida decimetro;
-    static TablaMedida metro;
-    static TablaMedida decametro;
-    static TablaMedida hectometro;
-    static TablaMedida kilometro;
+    static TablaTemperatura milimetro;
+    static TablaTemperatura centimetro;
+    static TablaTemperatura decimetro;
+    static TablaTemperatura metro;
+    static TablaTemperatura decametro;
+    static TablaTemperatura hectometro;
+    static TablaTemperatura kilometro;
 
     /**
      * Creates new form DivisasView
@@ -38,7 +38,7 @@ public class MedidaView extends javax.swing.JPanel {
         kilometro = new TablaKilometro();
     }
 
-    public static double getValorMedida(TablaMedida tabla, String moneda) {
+    public static double getValorMedida(TablaTemperatura tabla, String moneda) {
         return tabla.GetValue(moneda);
     }
 
@@ -57,7 +57,7 @@ public class MedidaView extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         comboOrigenMedida = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
-        btnConvertirDivisa = new javax.swing.JLabel();
+        btnConvertirMedida = new javax.swing.JLabel();
         txtResultadoMedida = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         comboDestinoMedida = new javax.swing.JComboBox<>();
@@ -67,7 +67,7 @@ public class MedidaView extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Roboto Black", 0, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Ingresa la cantidad que desea convertir:");
+        jLabel1.setText("Ingresa la medida que desea convertir:");
 
         txtMontoMedida.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         txtMontoMedida.setForeground(new java.awt.Color(153, 153, 153));
@@ -85,23 +85,23 @@ public class MedidaView extends javax.swing.JPanel {
 
         comboOrigenMedida.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         comboOrigenMedida.setForeground(new java.awt.Color(102, 102, 102));
-        comboOrigenMedida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "mm", "cm", "dm", "m", "Dam", "Hm", "Km" }));
+        comboOrigenMedida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "mm", "cm", "dm", "m", "Dam", "Hm", "Km", " " }));
 
         jPanel2.setBackground(new java.awt.Color(0, 99, 82));
 
-        btnConvertirDivisa.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
-        btnConvertirDivisa.setForeground(new java.awt.Color(255, 255, 255));
-        btnConvertirDivisa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnConvertirDivisa.setText("CONVERTIR");
-        btnConvertirDivisa.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnConvertirMedida.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        btnConvertirMedida.setForeground(new java.awt.Color(255, 255, 255));
+        btnConvertirMedida.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnConvertirMedida.setText("CONVERTIR");
+        btnConvertirMedida.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnConvertirDivisaMouseClicked(evt);
+                btnConvertirMedidaMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnConvertirDivisaMouseEntered(evt);
+                btnConvertirMedidaMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnConvertirDivisaMouseExited(evt);
+                btnConvertirMedidaMouseExited(evt);
             }
         });
 
@@ -109,11 +109,11 @@ public class MedidaView extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnConvertirDivisa, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+            .addComponent(btnConvertirMedida, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnConvertirDivisa, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+            .addComponent(btnConvertirMedida, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
         );
 
         txtResultadoMedida.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -123,11 +123,12 @@ public class MedidaView extends javax.swing.JPanel {
 
         jLabel4.setFont(new java.awt.Font("Roboto Black", 0, 20)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Medida de origen\n");
+        jLabel4.setText("Medida de origen ");
 
         comboDestinoMedida.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         comboDestinoMedida.setForeground(new java.awt.Color(102, 102, 102));
         comboDestinoMedida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "mm", "cm", "dm", "m", "Dam", "Hm", "Km" }));
+        comboDestinoMedida.setSelectedIndex(3);
         comboDestinoMedida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboDestinoMedidaActionPerformed(evt);
@@ -202,15 +203,15 @@ public class MedidaView extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_comboDestinoMedidaActionPerformed
 
-    private void btnConvertirDivisaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConvertirDivisaMouseEntered
+    private void btnConvertirMedidaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConvertirMedidaMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnConvertirDivisaMouseEntered
+    }//GEN-LAST:event_btnConvertirMedidaMouseEntered
 
-    private void btnConvertirDivisaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConvertirDivisaMouseExited
+    private void btnConvertirMedidaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConvertirMedidaMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnConvertirDivisaMouseExited
+    }//GEN-LAST:event_btnConvertirMedidaMouseExited
 
-    private void btnConvertirDivisaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConvertirDivisaMouseClicked
+    private void btnConvertirMedidaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConvertirMedidaMouseClicked
         // TODO add your handling code here:
         double monto = Double.parseDouble(txtMontoMedida.getText());
         String medidaOrigen = (String) comboOrigenMedida.getSelectedItem();
@@ -243,13 +244,13 @@ public class MedidaView extends javax.swing.JPanel {
                 break;
             case "Km":
                 valorMedida = getValorMedida(kilometro, medidaDestino);
-                txtResultadoMedida.setText(String.format("%.2f", (monto* valorMedida)));
+                txtResultadoMedida.setText(String.format("%.2f", (monto * valorMedida)));
                 break;
 
             default:
                 System.out.println("No se pudo completar");
         }
-    }//GEN-LAST:event_btnConvertirDivisaMouseClicked
+    }//GEN-LAST:event_btnConvertirMedidaMouseClicked
 
     private void txtMontoMedidaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMontoMedidaMouseClicked
         // TODO add your handling code here:
@@ -258,7 +259,7 @@ public class MedidaView extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel btnConvertirDivisa;
+    private javax.swing.JLabel btnConvertirMedida;
     private javax.swing.JComboBox<String> comboDestinoMedida;
     private javax.swing.JComboBox<String> comboOrigenMedida;
     private javax.swing.JLabel jLabel1;

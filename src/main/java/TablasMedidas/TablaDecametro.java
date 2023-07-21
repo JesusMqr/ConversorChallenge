@@ -10,7 +10,7 @@ import java.util.HashMap;
  *
  * @author Jesus
  */
-public class TablaDecametro  extends TablaMedida{
+public class TablaDecametro  extends TablaTemperatura{
     HashMap<String,Double>tablaDecametro = new HashMap<>();
     
     public TablaDecametro(){

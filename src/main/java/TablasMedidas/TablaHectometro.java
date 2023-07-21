@@ -10,7 +10,7 @@ import java.util.HashMap;
  *
  * @author Jesus
  */
-public class TablaHectometro  extends TablaMedida{
+public class TablaHectometro  extends TablaTemperatura{
     HashMap<String,Double>tablaHectometro = new HashMap<>();
     
     public TablaHectometro(){
